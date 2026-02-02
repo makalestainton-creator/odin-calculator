@@ -114,7 +114,7 @@ function addOperator(event) {
 
 function evaluateExpression(event) {
   const answer = operate();
-  if (isNaN(answer) || !isFinite(answer) || (!utils.num2)) {
+  if (isNaN(answer) || !isFinite(answer) || (!utils.num2 && utils.num1 && utils.sign)) {
     displayResult("Error!");
     utils.num1 = "";
     utils.num2 = "";
@@ -252,4 +252,16 @@ document.body.addEventListener("keydown", (event) => {
   } else if (event.key === "Delete") {
     clearAll();
   }
+});
+
+document.querySelector(".js-keyboard-shortcuts").addEventListener("click", () => {
+  document.querySelector(".js-keyboard-dialogue").classList.add("keyboard-dialogue-active");
+
+  document.querySelector(".js-dialogue-overlay").classList.add("dialogue-overlay-active");
+}); 
+
+document.querySelector(".js-ok-button").addEventListener("click", () => {
+  document.querySelector(".js-keyboard-dialogue").classList.remove("keyboard-dialogue-active");
+
+  document.querySelector(".js-dialogue-overlay").classList.remove("dialogue-overlay-active");
 });

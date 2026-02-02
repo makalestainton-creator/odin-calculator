@@ -6,11 +6,21 @@
 
 body {
   display: flex;
+  flex-direction: column;
+  gap: 40px;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #cbd7da;
-  z-index: 1000;
+  background-color: #e8eef0;
+}
+
+.keyboard-shortcuts {
+  color: #4d5763;
+}
+
+.keyboard-shortcuts:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .calculator {
@@ -111,4 +121,66 @@ button:active {
   background-color: #1e3164;
   grid-column-start: 4;
   grid-column-end: 6;
+}
+
+.keyboard-dialogue {
+  z-index: 1000;
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  padding: 20px;
+  border-radius: .5rem;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all .8s ease;
+  opacity: 0;
+}
+
+.keyboard-dialogue-active {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.key-match {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px;
+  row-gap: 12px;
+}
+
+.key-match .title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3790f0;
+}
+
+.keyboard-dialogue button {
+  background-color: #dfedfc;
+  color: #3790f0;
+  border: 1px solid #d2dbf5;
+  width: 100%;
+  margin-top: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease border 0.3s ease;
+}
+
+.keyboard-dialogue button:hover {
+  background-color: #c0defd;
+  box-shadow: 0px 1px 8px #d2e6fc;
+  border: 1px solid #c6dffa;
+}
+
+.dialogue-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  visibility: hidden;
+}
+
+.dialogue-overlay-active {
+  visibility: visible;
 }
